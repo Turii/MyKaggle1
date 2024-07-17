@@ -2,6 +2,7 @@
 kaggle.json
 myenv/
 
+
 # Ігнорування файлів даних з Kaggle
 winemag-data-*.json
 winemag-data*.csv
