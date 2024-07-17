@@ -1,3 +1,13 @@
+# Ігнорування файлу Kaggle API ключа
+kaggle.json
+
+
+# Ігнорування файлів даних з Kaggle
+winemag-data-*.json
+winemag-data*.csv
+wine-reviews.zip
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
