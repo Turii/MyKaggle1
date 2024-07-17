@@ -1,6 +1,6 @@
 # Ігнорування файлу Kaggle API ключа
 kaggle.json
-
+myenv/
 
 # Ігнорування файлів даних з Kaggle
 winemag-data-*.json
