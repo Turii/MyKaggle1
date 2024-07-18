@@ -28,6 +28,9 @@ jobs:
       env:
         KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
 
+    - name: Check Kaggle API file
+      run: ls -alh ~/.kaggle/
+
     - name: Execute Jupyter Notebook
       run: |
         jupyter nbconvert --to notebook --execute MyKaggle1.ipynb --output executed_notebook.ipynb
