@@ -23,7 +23,7 @@ jobs:
     - name: Set up Kaggle API
       run: |
         mkdir -p ~/.kaggle
-        echo "${{ secrets.KAGGLE_JSON }}" > ~/.kaggle/kaggle.json
+        echo "$KAGGLE_JSON" > ~/.kaggle/kaggle.json
         chmod 600 ~/.kaggle/kaggle.json
       env:
         KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
