@@ -5,24 +5,33 @@ on: [push]
 jobs:
   run-notebook:
     runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      
-      - name: Install dependencies
-        run: |
-          pip install notebook
-          pip install kaggle
-          pip install scikit-learn
-          mkdir -p ~/.kaggle
-          echo "$KAGGLE_JSON" > ~/.kaggle/kaggle.json
-          chmod 600 ~/.kaggle/kaggle.json
 
-      - name: Execute Jupyter Notebook
-        run: |
-          jupyter nbconvert --to notebook --execute MyKaggle1.ipynb --output executed_notebook.ipynb
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install notebook
+        pip install kaggle
+        pip install scikit-learn
+
+    - name: Set up Kaggle API
+      run: |
+        mkdir -p ~/.kaggle
+        echo "$KAGGLE_JSON" > ~/.kaggle/kaggle.json
+        chmod 600 ~/.kaggle/kaggle.json
+      env:
+        KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
+
+    - name: Check Kaggle API file
+      run: ls -alh ~/.kaggle/
+
+    - name: Execute Jupyter Notebook
+      run: |
+        jupyter nbconvert --to notebook --execute MyKaggle1.ipynb --output executed_notebook.ipynb
