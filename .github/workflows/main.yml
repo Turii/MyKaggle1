@@ -1,4 +1,4 @@
-name: Run Jupyter Notebook
+name: RunJupyter Notebook
 
 on: [push]
 
@@ -8,17 +8,17 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
     - name: Install dependencies
       run: |
-        pip install notebook
-        pip install kaggle
+        python -m pip install --upgrade pip
+        pip install kaggle pandas scikit-learn jupyter
 
     - name: Set up Kaggle API
       run: |
@@ -27,6 +27,9 @@ jobs:
         chmod 600 ~/.kaggle/kaggle.json
       env:
         KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
+
+    - name: Check Kaggle API file
+      run: ls -alh ~/.kaggle/
 
     - name: Execute Jupyter Notebook
       run: |
