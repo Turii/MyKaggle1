@@ -17,9 +17,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install notebook
-        pip install kaggle
-        pip install scikit-learn
+        python -m pip install --upgrade pip
+        pip install kaggle pandas scikit-learn jupyter
 
     - name: Set up Kaggle API
       run: |
