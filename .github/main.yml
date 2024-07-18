@@ -1,4 +1,4 @@
-name: Run Jupyter Notebook
+name: RunJupyter Notebook
 
 on: [push]
 
